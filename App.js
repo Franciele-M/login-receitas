@@ -8,6 +8,7 @@ import ModalMenu from './src/components/ModalMenu';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { criaTabela } from './src/database/Queries';
 import PagLogin from './src/Pages/PagLogin';
+import index from './src/Pages/index';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -21,7 +22,7 @@ export default function App() {
   return(
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName='PagLogin'
+        initialRouteName='index'
         screenOptions={({route, navigation}) => 
         ({ headerLeft: () => (<Image style={styles.imagemLogo} source={require("./src/img/Logo.png")}/>), 
           headerTitle: "", 
@@ -33,6 +34,7 @@ export default function App() {
           ), 
           animation: 'slide_from_right'  })}>
 
+        <Stack.Screen options={{headerShown: false, animation: 'default'}} name='index' component={index}/>
         <Stack.Screen options={{headerShown: false, animation: 'default'}} name='PagCadastro' component={PagCadastro}/>
         <Stack.Screen options={{headerShown: false, animation: 'default'}} name='PagLogin' component={PagLogin}/>
         <Stack.Screen  name='PagDepois' component={PagDepois}/>
